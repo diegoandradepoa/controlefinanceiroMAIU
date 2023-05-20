@@ -1,0 +1,108 @@
+Passo a passo para iniciar um projeto
+
+1 - Configurar o icone no arquivo csproj. A condição abaixo permite que somente no android seja rodado o icone específico.
+
+<!-- App Icon -->
+		<MauiIcon Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'" Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg_android.svg" Color="#000000" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#000000" />
+
+ 2 - Configurar a splash screen. Pode ser configurada a cor e o tamanho.
+
+
+<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#000000" BaseSize="193,180" />
+
+3 - Criar o modelo para o projeto
+
+4 - Instalar o banco de dados que o projeto precisa. LiteDB - NOSQL para um projeto local ou SQL para projeto maior com banco SQL.
+
+5 - Criar a pasta Repositories
+
+Criar o arquivo TransactionRepository com os métodos CRUD e criar a ITransactionRepository por meio do botão direito e extrair a interface
+
+6 - Depois no arquivo ITransactionRepository linkar com o DB.
+
+7 - Configurar a injecao de dependencia e o caminho do bd
+
+Nos arquivos MauiProgram e AppSettings
+
+8 - Criar as telas
+
+Crie uma pasta chamada views
+
+Crie os arquivos dentro da View com o formato .NET MAUI ContentView (XAML)
+
+9 - Agora vamos configurar a página de inicialização do projeto
+
+Delete os arquoivos AppShell.xaml e MainPage.xaml
+
+10 - Configure a página a ser inicializada
+
+Vá no arquivo Appxaml.cs que é o codebehind do arquivo App.xaml
+
+Substitua pela página escolhida 
+
+MainPage = xxxxxxxxxxxxx
+
+11 - Ajustar as views para ContentPage caso não esteja assim.
+
+12 - Ao criar um botão deve ser criado no code behind o seu método handler
+
+13 - Chamar no code behind App.Current.MainPage = new metodoAdd();
+
+14 - Usar como exemplo as páginas com os leiautes existentes
+
+15 - Para trocar a cor primária vá na pasta Resources/Styles e troque a cor
+
+16 - Para personalizar o botão vá em Resouces/Colors e troque os valores.
+
+17 - Para criar a navegação vá na página  App.xaml.cs
+
+Inclua a instância do navigationPage
+
+18 - Depois na tela inicial para ir para as outras páginas devemos atualizar o codeBehind do evento do click
+para montar a nova tela e não substituí-la pelos métodos Push 
+
+PushAsync - A tela é criada uma camada que tem botão de voltar
+PushModalAsync - A tela não possui botão de voltar 
+Obs: Comportamentos Windows
+
+19 - Ajustar o botão voltar
+
+Colocar a imagem no local para fechar
+
+20 - Deixar o elemento clicável
+
+usar o método  Image.GestureRecognizers
+
+Depois criar o evento no code behind para voltar a página excluindo a mesma.
+
+21 -Finalize o layout
+
+22 - Fazer o cadastro funcionar no banco
+
+Para fazer a leitura dos campos usa-se uma forma de sintaxe para instaciar
+
+x:Name="EntryName"
+
+Esse campo acima linka xaml com o codebehind em cs;
+
+23 - Criando um método de validação dos campos e exibindo na tela.
+
+Linke o método no arquivo xaml
+
+24 - Link no arquivo xaml
+
+<!--Codigo para exibir alertas de erro-->
+        <Label x:Name="LabelError" IsVisible="False" TextColor="Red"/>
+
+25 - Ajuste a injecao de dependencia
+
+26 - Vincular o método de Add 
+
+27 - Para atualizar a listagem na tela com os dados atualizados
+
+Baixar pacote CommunityToolkit.Mvvm
+
+28 -
+
